@@ -32,7 +32,7 @@ _outint		proc 	far
 _outint endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 _inint		proc	far
-	
+	invoke	atodw, input()
 	ret
 _inint endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -10,14 +10,20 @@ include iolib.asm	; it should be replaced by includelib iolib.obj
 .data
 
 lpstrMessage db "Hello, World",13,10,0
+lpstrMsgInput db "Type number> ",0
 
 .code
 
 start:
 ; clear screen macro
 ; cls
-; writing to console
-outstr offset lpstrMessage
+
+outstr	offset	lpstrMsgInput
+inint	eax
+outstr	offset lpstrMessage
+inc	eax
+outint	eax
+newline
 
 mov	ebx, 0
 mov	eax, 1
@@ -26,8 +32,10 @@ mov	eax, 1
 	; macro for changing cursor position
 	;loc	ebx, eax
 	; macro for writing to console
-	printc "Hello world \n"
-	outint	2014
+	; printc "Hello world \n"
+	outint	eax
+	print ";"
+	outint ebx
 	newline
 	
 	inc	ebx
