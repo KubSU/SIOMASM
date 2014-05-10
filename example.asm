@@ -21,7 +21,7 @@ start:
 outstr	offset	lpstrMsgInput
 inint	eax
 outstr	offset lpstrMessage
-inc	eax
+sub	eax, 5
 outint	eax
 newline
 
