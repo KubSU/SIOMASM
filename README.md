@@ -1,4 +1,38 @@
-SIOMASM
-=======
+# SIOMASM
 
-Simple Input/Output Library for MASM
+Простая библиотека ввода вывода. Адаптирована под Windows.
+
+## Макросы
+
+### inint a
+
+Параметр a --- регистр или память
+
+### outint a
+
+Параметр a --- регистр или память
+
+### newline
+
+Перевод строки.
+
+### outstr o
+
+Параметр o --- offset строки. Строка обязательно должна оканчиваться 0.
+
+## Компиляция и линковка
+
+### Компиляция
+```
+ml /c /coff <FileName>.asm
+```
+### Линковка
+
+Для консольного приложения:
+```
+link <FileName>.obj /subsystem:console
+```
+Для оконного прриложения:
+```
+link <FileName>.obj /subsystem:windows
+```
