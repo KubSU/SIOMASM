@@ -9,7 +9,7 @@ include iolib.asm	; it should be replaced by includelib iolib.obj
 
 .data
 
-lpstrMessage db "Hello, World",13,10,0
+lpstrMessage db "Hello, World", 13,10,0
 lpstrMsgInput db "Type number> ",0
 
 .code

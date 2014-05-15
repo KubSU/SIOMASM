@@ -16,7 +16,7 @@ outint	macro	num
 	pop	eax
 endm
 
-same	MACRO	name,variants,ans
+same	macro	name,variants,ans
 
 	ans=0
 	IRP	v,<variants>
@@ -26,7 +26,7 @@ same	MACRO	name,variants,ans
 	ENDIF
 	ENDM
 
-	ENDM
+endm
 
 inint	macro	x
 	LOCAL	regeax?
