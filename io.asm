@@ -10,12 +10,14 @@ outstr	macro string
 	pop	edx
 endm
 
-outint	macro	num
+outint	macro	num, digits := <0>
 	push	eax
 	push	ecx
 	push	edx
 	push	num
 	pop	eax
+	push	digits
+	pop	ecx
 	call	_outint
 	pop	edx
 	pop	ecx

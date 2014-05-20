@@ -1,6 +1,5 @@
 .686
 
-.model flat, stdcall
 option casemap :none
 
 .xlist
@@ -13,7 +12,7 @@ include \masm32\macros\macros.asm
 includelib \masm32\lib\masm32.lib
 includelib \masm32\lib\kernel32.lib
 includelib \masm32\lib\user32.lib
-; or just include \masm\include\masm32rt.inc
+; or just include \masm32\include\masm32rt.inc
 .data
 
 iolib_buffer	db 	255 dup (?)
@@ -26,8 +25,22 @@ _outstr		proc	far
 _outstr endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 _outint		proc 	far
+	push	ecx
 	invoke	dwtoa, eax, ADDR iolib_buffer
+	invoke	StrLen, addr iolib_buffer
+	pop	ecx
+	
+	.if ecx > eax
+		sub	ecx, eax
+		.while ecx > 0
+			push	ecx
+			print	" "
+			pop	ecx
+			dec ecx
+		.endw
+	.endif
 	print	addr iolib_buffer
+	
 	ret
 _outint endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

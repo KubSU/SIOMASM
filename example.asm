@@ -22,7 +22,7 @@ outstr	offset	lpstrMsgInput
 inint	eax
 outstr	offset lpstrMessage
 sub	eax, 5
-outint	eax
+outint	eax, 3
 newline
 
 mov	ebx, 0
