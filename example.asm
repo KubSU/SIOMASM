@@ -29,12 +29,8 @@ mov	ebx, 0
 mov	eax, 1
 
 .while eax
-	; macro for changing cursor position
-	;loc	ebx, eax
-	; macro for writing to console
-	; printc "Hello world \n"
 	outint	eax
-	print ";"
+	outch ';'
 	outint ebx
 	newline
 	

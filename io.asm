@@ -10,6 +10,16 @@ outstr	macro string
 	pop	edx
 endm
 
+outch	macro	char
+	push 	edx
+	push	ecx
+	push	eax
+	print	chr$(char)
+	pop		eax
+	pop		ecx
+	pop		edx
+endm
+
 outint	macro	num, digits := <0>
 	push	eax
 	push	ecx

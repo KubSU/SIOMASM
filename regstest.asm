@@ -34,7 +34,8 @@ newline
 outint edi
 newline
 
-
+outch '='
+newline
 
 outint eax
 newline
