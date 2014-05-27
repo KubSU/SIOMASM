@@ -4,6 +4,8 @@
 
 Скачать [архив](https://github.com/KubSU/SIOMASM/archive/master.zip).
 
+[Сообщить об ошибке](https://github.com/KubSU/SIOMASM/issues/new).
+
 ## Макросы
 
 Макрос        | Описание
