@@ -1,11 +1,5 @@
 .686
-.model flat, stdcall
-option casemap :none
-
-.xlist
-include io.asm		; macro
-include iolib.asm	; it should be replaced by includelib iolib.obj
-.list
+include /masm32/include/io.asm
 
 .data
 
@@ -14,25 +8,20 @@ include iolib.asm	; it should be replaced by includelib iolib.obj
 
 start:
 
-mov 	eax, 1
-mov 	ebx, 2
-mov		ecx, 3
-mov		edx, 4
-mov		esi, 5
-mov		edi, 6
+mov 	eax, 0
+mov 	ebx, 0
+mov	ecx, 0
+mov	edx, 0
+mov	esi, 0
+mov	edi, 0
 
-outint eax
-newline
-outint ebx
-newline
-outint ecx
-newline
-outint edx
-newline
-outint esi
-newline
-outint edi
-newline
+inint eax
+inint ebx
+inint ecx
+inint edx
+inint esi
+inint edi
+
 
 outch '='
 newline

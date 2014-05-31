@@ -1,21 +1,23 @@
 .686
-
 option casemap :none
-
-.xlist
 include \masm32\include\masm32rt.inc
+
+ltoa PROTO  :DWORD, :DWORD
+StrLen PROTO :DWORD
+atol PROTO :DWORD
+
 .data
 
 iolib_buffer	db 	255 dup (?)
 
 .code
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-_outstr		proc	far
+_outstr	proc
 	print	edx
 	ret
 _outstr endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-_outint		proc 	far
+_outint	proc
 	push	ecx
 	invoke	ltoa, eax, ADDR iolib_buffer
 	invoke	StrLen, addr iolib_buffer
@@ -35,8 +37,14 @@ _outint		proc 	far
 	ret
 _outint endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-_inint		proc	far
+_inint	proc
+	push	ecx
+	push	edx
 	invoke	atol, input()
+	pop	edx
+	pop	ecx
 	ret
 _inint endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+end

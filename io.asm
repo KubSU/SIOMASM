@@ -1,3 +1,12 @@
+.xlist
+option casemap :none
+include \masm32\include\masm32rt.inc
+includelib \masm32\lib\iolib.lib
+
+_outstr PROTO
+_outint	PROTO 
+_inint	PROTO 
+
 outstr	macro string
 	push	edx
 	push	eax
@@ -15,9 +24,9 @@ outch	macro	char
 	push	ecx
 	push	eax
 	print	chr$(char)
-	pop		eax
-	pop		ecx
-	pop		edx
+	pop	eax
+	pop	ecx
+	pop	edx
 endm
 
 outint	macro	num, digits := <0>
@@ -48,8 +57,6 @@ endm
 
 inint	macro	x
 	LOCAL	regeax?
-	push	ecx
-	push	edx
 	same	<x>,<eax,eAX,eAx,eaX,Eax,EAX,EAx,EaX>,regeax?
 	IF	regeax?
 	CALL	_inint
@@ -59,8 +66,6 @@ inint	macro	x
 	MOV	x, EAX
 	POP	EAX
 	ENDIF
-	pop	edx
-	pop	ecx
 endm
 
 newline	macro
@@ -72,3 +77,4 @@ newline	macro
 	pop	ecx
 	pop	eax
 endm
+.list
