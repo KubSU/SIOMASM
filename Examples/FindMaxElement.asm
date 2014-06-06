@@ -1,11 +1,5 @@
 .686
-.model flat, stdcall
-option casemap :none
-
-.xlist
-include io.asm		; macro
-include iolib.asm	; it should be replaced by includelib iolib.obj
-.list
+include /masm32/include/io.asm
 
 .data
 
