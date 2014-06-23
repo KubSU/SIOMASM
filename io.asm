@@ -5,7 +5,8 @@ includelib \masm32\lib\iolib.lib
 
 _outstr PROTO
 _outint	PROTO 
-_inint	PROTO 
+_inint	PROTO
+system	PROTO c :dword
 
 outstr	macro string
 	push	edx

@@ -5,14 +5,23 @@ include \masm32\include\masm32rt.inc
 ltoa PROTO  :DWORD, :DWORD
 StrLen PROTO :DWORD
 atol PROTO :DWORD
+system	PROTO c :dword
 
 .data
 
 iolib_buffer	db 	255 dup (?)
+iolib_cmd	db	"chcp 1251 > stderr",0
+iolib_isCpChanged dw	0
 
 .code
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 _outstr	proc
+	.if iolib_isCpChanged == 0
+		mov iolib_isCpChanged, 1
+		push	edx
+		invoke system, addr iolib_cmd
+		pop	edx
+	.endif
 	print	edx
 	ret
 _outstr endp
