@@ -2,7 +2,7 @@
 include /masm32/include/io.asm
 
 .data
-
+char	db	0
 
 .code
 
@@ -21,7 +21,7 @@ inint ecx
 inint edx
 inint esi
 inint edi
-
+inch	char
 
 outch '='
 newline
@@ -38,7 +38,12 @@ outint esi
 newline
 outint edi
 newline
-
+outch	char
+newline
+mov	eax, 0
+mov	al, char
+outint	eax
+newline
 
 exit
 end start

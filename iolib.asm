@@ -5,6 +5,7 @@ include \masm32\include\masm32rt.inc
 ltoa PROTO  :DWORD, :DWORD
 StrLen PROTO :DWORD
 atol PROTO :DWORD
+strcpy	PROTO c	:dword, :dword
 
 .data
 
@@ -47,5 +48,16 @@ _inint	proc
 	ret
 _inint endp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+_inch	proc
+	push	ecx
+	push	edx
+	push	eax
+	invoke	strcpy, addr iolib_buffer, input()
+	pop	eax
+	mov	al, iolib_buffer[0]
+	pop	edx
+	pop	ecx
+	ret
+_inch	endp
 
 end

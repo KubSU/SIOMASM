@@ -6,6 +6,7 @@ includelib \masm32\lib\iolib.lib
 _outstr PROTO
 _outint	PROTO 
 _inint	PROTO
+_inch	PROTO
 system	PROTO c :dword
 
 outstr	macro string
@@ -24,10 +25,30 @@ outch	macro	char
 	push 	edx
 	push	ecx
 	push	eax
-	print	chr$(char)
+	printf("%c", char)
 	pop	eax
 	pop	ecx
 	pop	edx
+endm
+
+inch	macro	x
+	LOCAL	regax?
+	same	<x>,<ah,AH,Ah,aH>,regax?
+	IF	regax?
+		XCHG	AH,AL
+		CALL	_inch
+		XCHG	AH,AL
+	ELSE
+		same	<x>,<al,AL,Al,aL>,regax?
+		IF	regax?
+			CALL	_inch
+		ELSE
+			PUSH	AX
+			CALL	_inch
+			MOV	x,AL
+			POP	AX
+		ENDIF
+	ENDIF
 endm
 
 outint	macro	num, digits := <0>
