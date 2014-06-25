@@ -14,12 +14,12 @@ arr	dd	10 dup(?)
 start:
 
 outstr	offset	lpstrMsgInput
-inint	eax
+inint32	eax
 outstr	offset lpstrMessage
 sub	eax, 5
-outint	eax, 3
+outint32 eax, 3
 newline
-outint	num
+outint32 num
 newline
 
 outstr	offset 	msgArr
@@ -29,7 +29,7 @@ mov	ebx, 0
 mov	eax, 2
 .while ebx < 10
 	mov	arr[ebx], eax
-	outint	arr[ebx]
+	outint32 arr[ebx]
 	newline
 	inc	ebx
 	mul	ebx

@@ -11,7 +11,7 @@ lpstrMsgOutput db "Digits count: ",0
 start:
 
 	outstr	offset lpstrMsgInput
-	inint	eax
+	inint32	eax
 
 	mov	ecx, 0
 	mov	ebx, 10
@@ -23,8 +23,9 @@ start:
 	.endw
 
 	outstr	offset lpstrMsgOutput
-	outint 	ecx
+	outint32 ecx
 newline
 
+inkey
 exit
 end start

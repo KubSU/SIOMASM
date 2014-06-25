@@ -14,13 +14,13 @@ include /masm32/include/io.asm
 start:
 
 	outstr	offset lpstrMsgInput
-	inint	alength
+	inint32	alength
 
 	mov	ecx, alength
 	mov	esi, 0
 
 	.while	ecx
-		inint	array[esi]
+		inint32	array[esi]
 		add	esi, 4
 		dec	ecx
 	.endw
@@ -38,9 +38,9 @@ start:
 	.endw
 
 	outstr	offset lpstrMsgOutput
-	outint 	eax
-	inint	eax
+	outint32 eax
+	newline
 
-
+inkey
 exit
 end start

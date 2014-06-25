@@ -17,7 +17,7 @@ msgInput db	"Type matrix dimension N<10 $> ",0
 start:
 
 outstr	offset	msgInput
-inint	n
+inint32	n
 
 ;seeding random generator
 invoke GetCurrentProcessId
@@ -76,7 +76,7 @@ mov	j, 0
 mov	esi, offset m3
 call outm
 newline
-
+inkey
 exit
 
 countIndex	proc
@@ -101,7 +101,7 @@ mov	j, 0
 		call	countIndex
 		mov		edi, esi
 		add		edi, ebx
-		outint [edi], 4
+		outint32 [edi], 4
 		inc	j
 		mov	ecx, j
 	.endw

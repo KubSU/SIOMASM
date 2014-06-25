@@ -13,7 +13,7 @@ n	dd	0
 start:
 ;looks great if n > 20
 	outstr	offset msgInput
-	inint eax
+	inint32 eax
 	mov	n, eax
 	mul	n
 	mov	ecx, eax
@@ -31,9 +31,9 @@ start:
 		mov	edx, j
 		
 		.if ebx > i && i < edx
-			outint 0, 2
+			outint8 0, 2
 		.else
-			outint	1, 2
+			outint8 1, 2
 		.endif
 		
 		dec	ecx
@@ -41,5 +41,6 @@ start:
 	.endw
 	newline
 
+inkey
 exit
 end start

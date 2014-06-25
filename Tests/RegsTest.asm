@@ -15,34 +15,34 @@ mov	edx, 0
 mov	esi, 0
 mov	edi, 0
 
-inint eax
-inint ebx
-inint ecx
-inint edx
-inint esi
-inint edi
+inint32 eax
+inint32 ebx
+inint32 ecx
+inint32 edx
+inint32 esi
+inint32 edi
 inch	char
 
 outch '='
 newline
 
-outint eax
+outint32 eax
 newline
-outint ebx
+outint32 ebx
 newline
-outint ecx
+outint32 ecx
 newline
-outint edx
+outint32 edx
 newline
-outint esi
+outint32 esi
 newline
-outint edi
+outint32 edi
 newline
 outch	char
 newline
 mov	eax, 0
 mov	al, char
-outint	eax
+outint32	eax
 newline
 
 exit
