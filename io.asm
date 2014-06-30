@@ -21,14 +21,31 @@ outstr	macro string
 	pop	edx
 endm
 
+outstrln macro string
+	push	edx
+	push	eax
+	push	ecx
+	push	string
+	pop	edx
+	call	_outstr
+	printc	"\n"
+	pop	ecx
+	pop	eax
+	pop	edx
+endm
+
 outch	macro	char
 	push 	edx
 	push	ecx
 	push	eax
-	printf("%c", char)
+	printc char
 	pop	eax
 	pop	ecx
 	pop	edx
+endm
+
+newline	macro
+	outch "\n"
 endm
 
 inch	macro	x
@@ -100,16 +117,6 @@ same	macro	name,variants,ans
 	ENDIF
 	ENDM
 
-endm
-
-newline	macro
-	push	eax
-	push	ecx
-	push	edx
-	printc	"\n"
-	pop	edx
-	pop	ecx
-	pop	eax
 endm
 
 inint32 macro	x
